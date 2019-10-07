@@ -15,27 +15,33 @@ const useStyles = makeStyles((theme: Theme) =>
       overflowX: "auto"
     },
     table: {
-      minWidth: 650
+      minWidth: 350
     }
   })
 )
 
 function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number
+  food: string,
+  temp: string = "37.0",
+  uri: boolean,
+  stuhl: boolean
 ) {
-  return { name, calories, fat, carbs, protein }
+  return {
+    date: new Date().toLocaleDateString(),
+    time: new Date().toLocaleTimeString().slice(0, -3),
+    food,
+    temp,
+    uri,
+    stuhl
+  }
 }
 
 const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9)
+  createData("B 15 min + 50ml", "37", true, false),
+  createData("55ml", null, true, false),
+  createData("B 30min + 35ml", "37", true, true),
+  createData("B 10min + 20ml", "37", true, false),
+  createData("45ml", "37", true, false)
 ]
 
 export default function SimpleTable() {
@@ -46,23 +52,26 @@ export default function SimpleTable() {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align='right'>Calories</TableCell>
-            <TableCell align='right'>Fat&nbsp;(g)</TableCell>
-            <TableCell align='right'>Carbs&nbsp;(g)</TableCell>
-            <TableCell align='right'>Protein&nbsp;(g)</TableCell>
+            <TableCell>Date</TableCell>
+            <TableCell>Time</TableCell>
+            <TableCell>Food</TableCell>
+            <TableCell>Temp</TableCell>
+            <TableCell>Uri/Stuhl</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <TableRow key={row.name}>
+          {rows.map((row, i) => (
+            <TableRow key={i}>
               <TableCell component='th' scope='row'>
-                {row.name}
+                {row.date}
               </TableCell>
-              <TableCell align='right'>{row.calories}</TableCell>
-              <TableCell align='right'>{row.fat}</TableCell>
-              <TableCell align='right'>{row.carbs}</TableCell>
-              <TableCell align='right'>{row.protein}</TableCell>
+              <TableCell>{row.time}</TableCell>
+              <TableCell>{row.food}</TableCell>
+              <TableCell>{row.temp}</TableCell>
+              <TableCell>
+                {row.uri ? "Uri " : " "}
+                {row.stuhl ? "Stuhl" : ""}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
