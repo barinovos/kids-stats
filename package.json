@@ -1,0 +1,39 @@
+{
+  "name": "kids-stats",
+  "version": "1.0.0",
+  "description": "Help add stats for babies",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel public/index.html",
+    "build": "parcel build public/index.html",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barinovos/kids-stats.git"
+  },
+  "keywords": [
+    "Baby",
+    "Stats",
+    "Temperature",
+    "App"
+  ],
+  "author": "Barinov Oleg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/barinovos/kids-stats/issues"
+  },
+  "homepage": "https://github.com/barinovos/kids-stats#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.4.3",
+    "@material-ui/icons": "^4.4.3",
+    "@material-ui/styles": "^4.4.3",
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1",
+    "styled-components": "^4.4.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3",
+    "typescript": "^3.6.3"
+  }
+}
